@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :messages
+  scope :except_me, ->(user) { where.not(id: user.id) }
 
   def username
     self.email.split("@")[0]

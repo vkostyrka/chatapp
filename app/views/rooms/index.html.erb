@@ -6,14 +6,22 @@
     <%= render partial: "layouts/new_room_form" %>
     <%= turbo_stream_from "rooms" %>
 
+
+
     <div id="rooms">
       <%= render @rooms %>
+    </div>
+
+    <h4> Users </h4>
+
+    <div id="users">
+      <%= render @users %>
     </div>
   </div>
 
   <div class="col-md-10 bg-dark">
     <% if @single_room %>
-      <h4 class="text-center"> <%= @single_room.name %></h4>
+      <h4 class="text-center"> <%= @single_room.name || @user.username %></h4>
 
       <%= turbo_stream_from @single_room %>
 
